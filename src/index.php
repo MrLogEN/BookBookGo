@@ -4,6 +4,15 @@ const COMMON_PATH = '/www/BookBookGo';
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+require_once __DIR__ . '/database/dbconnection.php';
+
+
+// $conn = DbConnection::getConnection();
+// $statement = $conn->prepare("SELECT * FROM AUTHORS;");
+// $statement->execute();
+// var_dump($statement->fetchAll());
+
+
 ?>
 
 <!DOCTYPE html>
@@ -15,10 +24,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
     <title>BookBookGo</title>
 </head>
 <body>
-    <div class="container">
-        
-    </div>
-
-    <script src="<?php echo COMMON_PATH;?>/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <?php require './requires/navigation.php'; ?>
+    <?php require './requires/scripts.php'; ?>
 </body>
 </html>

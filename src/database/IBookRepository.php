@@ -1,6 +1,6 @@
 <?php
 
-interface DbOperations{
+interface IBookRepository{
 
     public function getAll();
     public function getById($id);

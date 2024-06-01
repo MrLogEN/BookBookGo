@@ -1,5 +1,10 @@
 <?php 
 
+require_once  __DIR__ . "/../authentication/AuthUtils.php";
+require_once __DIR__ . "/../config.php";
+
+startSessionIfNone();
+
 
 ?>
 
@@ -31,12 +36,18 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Log in</a>
-                    </li>
+                    <?php if(!isAuthenticated()):?>
+                        <li class="nav-item">
+                            <a href="<?php echo BASE_URL;?>/register.php" class="nav-link">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo BASE_URL;?>/login.php" class="nav-link">Log in</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a href="<?php echo BASE_URL;?>/authentication/logout.php" class="nav-link">Log out</a>
+                        </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Cart</a>
                     </li>

@@ -19,7 +19,6 @@ class UserRepository implements IUserRepository {
 
             $resultUser = new User(
                 $response[0]["USER_ID"],
-                $response[0]["INFO_ID"],
                 $response[0]["EMAIL"],
                 $response[0]["NAME"],
                 $response[0]["PASSWORD"],
@@ -57,9 +56,8 @@ class UserRepository implements IUserRepository {
                 exit("User with the same e-mail has been already registered.");
             }
 
-            $statement = $pdo->prepare("INSERT INTO USERS(INFO_ID, EMAIL, PASSWORD, NAME, ROLE) VALUES(:info_id, :email, :password, :name, :role)");
+            $statement = $pdo->prepare("INSERT INTO USERS(EMAIL, PASSWORD, NAME, ROLE) VALUES(:email, :password, :name, :role)");
 
-            $statement->bindValue(":info_id", $user->infoId);
             $statement->bindValue(":email", $user->email);
             $statement->bindValue(":password", $user->password);
             $statement->bindValue(":name", $user->name);
